@@ -3,6 +3,7 @@ import { Link } from "gatsby";
 import {
   appContentNav,
   appContentNavLinks,
+  logoName
 } from "./nav.module.css"
 
 const Nav = () => {
@@ -11,7 +12,7 @@ const Nav = () => {
       <nav className="app-nav">
         <div className="app-content-nav-logo">
           <div className="app-nav-logo">
-            <Link to="/">Alfredo Moscoso</Link>
+            <Link className={logoName} to="/">Alfredo Moscoso</Link>
           </div>
         </div>
         <div className={appContentNavLinks}>

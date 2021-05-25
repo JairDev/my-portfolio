@@ -3,35 +3,43 @@
   margin: 0;
   padding: 0;
   list-style-type: none;
+  text-decoration: none;
 }
 
 .app-content-hero {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   min-height: calc(100vh - 5vh);
 }
 
 .wrapper-content-hero {
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   display: flex;
   min-height: calc(100vh - 5vh);
+  /* position: relative; */
+  overflow: hidden;
 }
 
 .app-left-content-hero {
-  border: 2px solid green;
+  /* border: 2px solid green; */
   width: 50%;
+  position: relative;
+  overflow: hidden;
+  z-index: 5;
 }
 
 .app-left-content-hero-role {
-  border: 2px solid blueviolet;
+  /* border: 2px solid blueviolet; */
   padding-top: 4rem;
 }
 
 .role {
-  font-size: calc(1vw + 5em);
+  font-size: calc(5vw + 1em);
+  font-family: "Rubik", georgia, serif;
+  letter-spacing: 2px;
 }
 
 .content-button {
-  border: 2px solid green;
+  /* border: 2px solid green; */
   display: flex;
   flex-direction: column;
   margin-top: 3rem;
@@ -41,16 +49,18 @@
   align-self: flex-end;
 }
 
-.contact-button {
+.contact-button-hero {
   border: none;
-  background: none;
+  /* border: 2px solid black; */
+  background: var(--accent-color);
+  border-radius: 8px;
+  color: var(--body-color);
   font-size: 24px;
-  border: 2px solid black;
-  padding: .5rem 1rem;
+  padding: .6rem 1.5rem;
 }
 
 .app-right-content-hero {
-  border: 2px solid green;
+  /* border: 2px solid green; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,11 +68,188 @@
 }
 
 .app-right-content-hero-img {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   width: 80%;
 }
 
 .hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.app-content-scroll-arrow {
+  /* border: 2px solid rgb(126, 11, 30); */
+  position: absolute;
+  bottom: 35px;
+}
+
+.scroll-back {
+  /* border: 2px solid red; */
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  color: var(--body-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  width: 70px;
+  height: 70px;
+  opacity: .5;
+  position: relative;
+  z-index: 6;
+}
+
+.background-section-left {
+  background-color: var(--light-prymary-color);
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -30%;
+  width: 60vw;
+  height: 100%;
+  transform: skew(-15deg);
+  opacity: 1;
+  z-index: 2;
+}
+
+.background-section-left-two {
+  background-color: var(--accent-color);
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -30%;
+  width: 70vw;
+  height: 50%;
+  transform: skew(-15deg);
+  opacity: .3;
+  z-index: 0;
+}
+
+/* About */
+
+.app-content-about-me {
+  /* border: 2px solid red ; */
+  padding-bottom: 10vh;
+}
+
+.app-content-about-me-header {
+  /* border: 2px solid blue; */
+  display: flex;
+  justify-content: space-between;
+  padding-top: 180px;
+}
+
+.app-content-about-me-photo {
+  /* border: 2px solid violet; */
+  width: 20vw;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.app-content-about-me-title {
+  /* border: 2px solid green; */
+  width: 50%;
+  /* display: flex; */
+}
+
+.span-name {
+  font-size: 64px;
+  font-family: "Rubik", georgia, serif;
+  letter-spacing: 2px;
+}
+
+.h2-name {
+  /* border: 2px solid rgb(0, 255, 42); */
+  font-size: 10vw;
+  font-family: "Rubik", georgia, serif;
+  letter-spacing: 2px;
+  text-align: end;
+}
+
+.contact-button-about {
+  border: none;
+  /* border: 2px solid black; */ 
+  background: var(--accent-color);
+  border-radius: 8px;
+  color: var(--body-color);
+  font-size: 24px;
+  padding: .6rem 1.5rem;
+}
+
+.app-content-about-me-description {
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: center;
+  padding-top: 10vh;
+}
+
+.wrapper-about-me-description {
+  /* border: 2px solid rgb(78, 47, 255); */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+}
+
+.p-description.sub-title-description {
+  letter-spacing: 2px;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.p-description:not(.p-description:first-child) {
+  font-size: 1.5rem;
+  margin-top: 5vh;
+}
+
+.p-description {
+  font-family: "Karla", georgia, serif;
+  line-height: 140%;
+  letter-spacing: 0.8px;
+}
+
+.h3-description {
+  font-family: "Rubik", georgia, serif;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  margin-top: 5vh;
+  text-align: left;
+}
+
+.content-button-about {
+  margin-top: 20vh;
+}
+
+/* skills */
+
+.app-content-skills {
+  border: 2px solid blue;
+  background-color: var(--dark-primary-color);
+  color: var(--body-color);
+  padding: 10vh 0;
+  text-align: center;
+}
+
+.h3-skills {
+  font-size: 4rem;
+  margin-bottom: 5vh;
+}
+
+.content-item-skills {
+  display: flex;
+  justify-content: space-around;
+}
+
+.item-skills {
+  width: 10%;
+}
+
+.item-skills img {
   width: 100%;
   height: 100%;
   object-fit: cover;

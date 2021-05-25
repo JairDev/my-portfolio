@@ -1,8 +1,15 @@
 .app-content-nav {
   position: fixed;
+  z-index: 10;
+}
+
+.logo-name {
+  font-size: calc(1vw + 1em);
+  font-family: "Rubik", georgia, serif;
 }
 
 .app-content-nav-links {
   display: none;
 }
+
 
