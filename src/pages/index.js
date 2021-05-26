@@ -3,29 +3,50 @@ import { Link } from "gatsby";
 import Layout from "../components/layout/layout";
 import * as styles from "./index.module.css";
 import phone from "../images/hero-phone.png";
-import photoProfile from "../images/foto-perfil.jpg";
+import photoProfile from "../images/foto-perfil.png";
+import phoneChallenge from "../images/phone-challenge.png";
+import codeChallenge from "../images/content-creator.png";
+import workCoin from "../images/coin.png";
+import workDessert from "../images/desert.png";
 import "../styles/variables.css";
-import iconReact from "../assets/react.svg"
-import js from "../assets/js.svg"
-import sass from "../assets/sass.svg"
-import css from "../assets/css.svg"
-import html from "../assets/html.svg"
+import cssIcon from "../assets/css.inline.svg";
+import gitIcon from "../assets/git.inline.svg";
+import htmlIcon from "../assets/html.inline.svg";
+import jsIcon from "../assets/js.inline.svg";
+import reactIcon from "../assets/react.inline.svg";
+import sassIcon from "../assets/sass.inline.svg";
 import "@fontsource/karla";
 import "@fontsource/rubik";
 
 const svgIcons = [
-  {name: iconReact},
-  {name: js},
-  {name: sass},
-  {name: css},
-  {name: html}
-]
+  { name: reactIcon },
+  { name: jsIcon },
+  { name: sassIcon },
+  { name: cssIcon },
+  { name: htmlIcon },
+  { name: gitIcon },
+];
+
+const dataWork = [
+  {
+    name: workCoin,
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+  },
+  {
+    name: workDessert,
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+  },
+];
 
 const IndexPage = () => {
   return (
     <Layout pageTitle={"Home Page"}>
       <>
-        <section className={styles.appContentHero}>
+        <section
+          className={`${styles.wrapperPadding} ${styles.appContentHero}`}
+        >
           <div className={styles.wrapperContentHero}>
             <div className={styles.appLeftContentHero}>
               <div className={styles.appLeftContentHeroRole}>
@@ -57,7 +78,9 @@ const IndexPage = () => {
           </div>
         </section>
 
-        <section className={styles.appContentAboutMe}>
+        <section
+          className={`${styles.wrapperPadding} ${styles.appContentAboutMe}`}
+        >
           <div className={styles.appContentAboutMeHeader}>
             <div className={styles.appContentAboutMePhoto}>
               <img
@@ -73,7 +96,9 @@ const IndexPage = () => {
           </div>
           <div className={styles.appContentAboutMeDescription}>
             <div className={styles.wrapperAboutMeDescription}>
-              <p className={`${styles.pDescription} ${styles.subTitleDescription}`}>
+              <p
+                className={`${styles.pDescription} ${styles.subTitleDescription}`}
+              >
                 Vivo en la caótica y bella ciudad de Caracas-Venezuela, donde
                 estoy labrando mi futuro como desarrollador frontend.
               </p>
@@ -107,7 +132,11 @@ const IndexPage = () => {
                 hago como hobby...
               </p>
 
-              <p className={`${styles.pDescription} ${styles.footerDescription}`}>Un gusto haberte mostrado una parte mí, saludos !</p>
+              <p
+                className={`${styles.pDescription} ${styles.footerDescription}`}
+              >
+                Un gusto haberte mostrado una parte mí, saludos !
+              </p>
 
               <div className={styles.contentButtonAbout}>
                 <form>
@@ -120,67 +149,101 @@ const IndexPage = () => {
           </div>
         </section>
 
-        <section className={styles.appContentSkills}>
+        <section
+          className={`${styles.wrapperPadding} ${styles.appContentSkills}`}
+        >
           <h3 className={styles.h3Skills}>Habilidades Actuales</h3>
           <div className={styles.contentSkills}>
             <ul className={styles.contentItemSkills}>
-              {svgIcons.map(icon => <li className={styles.itemSkills} key={icon.name} ><img src={icon.name}/></li>)}
+              {svgIcons.map((icon) => (
+                <li className={styles.itemSkills} key={icon.name}>
+                  <icon.name />
+                </li>
+              ))}
+              {/* <li className={styles.itemSkills}><img src={photoProfile}/></li> */}
             </ul>
           </div>
         </section>
-       
 
-        <section className="app-content-challenges">
-          <div className="app-content-challenges-header">
-            <div className="app-content-challenges-title">
-              <span>Desafíos Frontend</span>
+        <section
+          className={`${styles.wrapperPadding} ${styles.appContentChallenges}`}
+        >
+          <div className={styles.appContentChallengesHeader}>
+            <div className={styles.appContentChallengesTitle}>
+              <span className={styles.spanChallengeName}>Desafíos</span>
+              <h2 className={styles.h2FrontendName}>Frontend</h2>
             </div>
           </div>
-          <div className="wrapper-content-challenge">
-            <div className="app-left-content-challenge">
-              <div className="challenges-sub-title">
-                <p>Busco mejorar mis habilidades...</p>
+
+          <div className={styles.wrapperContentChallenge}>
+            <div className={styles.wrapperContentChallenge}></div>
+            <div className={styles.appLeftContentChallenge}>
+              <div className={styles.challengesSubTitle}>
+                <h3 className={styles.h3Challenge}>
+                  Busco mejorar mis habilidades como desarrollador frontend, a
+                  traves de desafíos del mundo real.
+                </h3>
               </div>
-              <div className="challenge-description">
-                <span>Desafió:</span>
+              <div className={styles.challengeDescription}>
+                <span>Desafío: Crear una aplicación de tareas pendientes</span>
+                <span>Dificultad: Intermedio</span>
+                <span>Fuente: frontendmentor.io</span>
               </div>
-              <div className="challenge-code-img">
-                <img src="" alt="" />
+              <div className={styles.challengeCodeImg}>
+                <div className={styles.wrapperCodeImg}>
+                  <img src={codeChallenge} alt="" />
+                </div>
               </div>
-              <div className="challenge-my-explanation">
-                <p>En este desafío...</p>
+              <div className={styles.challengeMyExplanation}>
+                <p className={styles.pMyExplanation}>
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer took a galley of type and scrambled it to make a type
+                  specimen book. It has survived not only five centuries, but
+                  also the leap into electronic typesetting, remaining
+                  essentially unchanged. It was popularised in the 1960s with
+                  the release of Letraset sheets containing Lorem Ipsum
+                  passages, and more recently with desktop publishing software
+                  like Aldus PageMaker including versions of Lorem Ipsum..
+                </p>
               </div>
             </div>
-            <div className="app-right-content-challenge">
-              <div className="app-right-content-challenge-img">
-                <img src="" alt="" />
+            <div className={styles.appRightContentChallenge}>
+              <div className={styles.appRightContentChallengeImg}>
+                <img src={phoneChallenge} alt="" />
               </div>
             </div>
           </div>
-          <div className="content-button">
-            <form>
-              <button>Contáctame</button>
-            </form>
+          <div className={styles.contentMoreLink}>
+            <a className={styles.moreLink} href={"#"}>
+              Mas desafíos
+            </a>
           </div>
         </section>
 
-        <section className="app-content-personal-projects">
-          <div className="app-content-personal-projects-header">
-            <div className="app-content-personal-projects-title">
-              <span>Proyectos Personales</span>
+        <section className={`${styles.wrapperPadding}`}>
+          <div className={styles.appContentPersonalProjectsHeader}>
+            <div className={styles.appContentPersonalProjectsTitle}>
+              <span className={styles.spanWorkName}>Proyectos</span>
+              <h2 className={styles.h2WorkName}>Personales</h2>
             </div>
-            <div className="content-personal-project">
-              <div className="content-personal-project-img">
-                <img src="" alt="" />
-              </div>
-              <p className="content-personal-project-description">
-                Este proyecto...
-              </p>
+            <div className={styles.wrapperPersonalProjects}>
+              {dataWork.map((work) => (
+                <div key={work.name} className={styles.contentPersonalProject}>
+                  <div className={styles.contentPersonalProjectImg}>
+                    <img src={work.name} alt="" />
+                  </div>
+                  <div className={styles.contentPersonalProjectDescription}>
+                    <p>{work.description}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        <section className="app-content-footer">
+        <section className={`${styles.wrapperPadding}`}>
           <div className="app-content-footer-form-contact"></div>
         </section>
       </>

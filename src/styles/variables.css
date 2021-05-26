@@ -4,5 +4,9 @@
   --light-prymary-color: #C5CAE9;
   --dark-primary-color: #303F9F;
   --accent-color: #7C4DFF;
-  --primary-text: #212121
+  --primary-text: #212121;
+  --title-font: "Rubik", georgia, serif;
+  --sub-title-font: "Karla", georgia, serif;
+  --letter-spacing: 2px;
+  --line-height: 140%;
 }
