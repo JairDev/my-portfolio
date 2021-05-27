@@ -4,6 +4,7 @@
   /* font-family: sans-serif; */
   background-color: var(--body-color);
   /* padding: 5vh 5vw; */
+  overflow: hidden;
 }
 
 

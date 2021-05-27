@@ -3,6 +3,7 @@ import { Link } from "gatsby";
 import Layout from "../components/layout/layout";
 import * as styles from "./index.module.css";
 import phone from "../images/hero-phone.png";
+import phone2 from "../images/hero-phone2.png";
 import photoProfile from "../images/foto-perfil.png";
 import phoneChallenge from "../images/phone-challenge.png";
 import codeChallenge from "../images/content-creator.png";
@@ -15,6 +16,7 @@ import htmlIcon from "../assets/html.inline.svg";
 import jsIcon from "../assets/js.inline.svg";
 import reactIcon from "../assets/react.inline.svg";
 import sassIcon from "../assets/sass.inline.svg";
+import ArrowIcon from "../assets/arrow.inline.svg";
 import "@fontsource/karla";
 import "@fontsource/rubik";
 
@@ -60,16 +62,24 @@ const IndexPage = () => {
                 </div>
               </div>
               <div className={styles.appContentScrollArrow}>
-                <span className={styles.scrollBack}></span>
+                <span className={styles.scrollBack}>
+                  <ArrowIcon/>
+                </span>
+
               </div>
               {/* <span className={styles.backgroundSectionLeft}></span> */}
             </div>
             <div className={styles.appRightContentHero}>
               <div className={styles.appRightContentHeroImg}>
+                <span className={`${styles.wordsHero} ${styles.top}`}>Responsive Design</span>
+                <span className={`${styles.wordsHero} ${styles.topRight}`}>Px</span>
+                <span className={`${styles.wordsHero} ${styles.bottomRight}`}>Interaction</span>
+                <span className={`${styles.wordsHero} ${styles.bottomLeft}`}>Web</span>
+                {/* <span className={`${styles.wordsHero} ${styles.rigthMiddle}`}>Layout</span> */}
                 <img
                   className={styles.heroImg}
-                  src={phone}
-                  alt="telefono con imagen"
+                  src={phone2}
+                  alt="teléfono con imagen"
                 />
               </div>
             </div>
@@ -83,6 +93,7 @@ const IndexPage = () => {
         >
           <div className={styles.appContentAboutMeHeader}>
             <div className={styles.appContentAboutMePhoto}>
+              <span className={styles.layerPhoto}></span>
               <img
                 className={styles.photo}
                 src={photoProfile}
@@ -91,11 +102,15 @@ const IndexPage = () => {
             </div>
             <div className={styles.appContentAboutMeTitle}>
               <span className={styles.spanName}>Hola soy</span>
+              {/* <h2 className={styles.h2Name}>Alfredo</h2> */}
               <h2 className={styles.h2Name}>Alfredo</h2>
             </div>
           </div>
           <div className={styles.appContentAboutMeDescription}>
             <div className={styles.wrapperAboutMeDescription}>
+              <span className={styles.lineRightAbout}></span>
+              <span className={styles.lineBottomAbout}></span>
+              <span className={styles.lineLeftAbout}></span>
               <p
                 className={`${styles.pDescription} ${styles.subTitleDescription}`}
               >
