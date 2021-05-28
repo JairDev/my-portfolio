@@ -17,6 +17,7 @@
   "dependencies": {
     "@fontsource/karla": "^4.3.0",
     "@fontsource/rubik": "^4.3.0",
+    "@fontsource/saira": "^4.4.0",
     "gatsby": "^3.4.1",
     "gatsby-plugin-gatsby-cloud": "^2.5.0",
     "gatsby-plugin-image": "^1.5.0",

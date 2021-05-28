@@ -1,7 +1,7 @@
 .app-content-nav {
   /* border: 2px solid green; */
-  /* background-color: rgb(240, 240, 240); */
-  padding: 3vh 5vw 5vh;
+  /* background-color: var(--body-color); */
+  padding: 2vh 5vw;
   position: fixed;
   width: 100%;
   z-index: 100;
@@ -14,8 +14,8 @@
 
 .logo-name {
   color: var(--primary-text);
-  font-size: calc(1vw + 1em);
-  font-family: "Rubik", georgia, serif;
+  font-size: calc(1vw + .5em);
+  font-family: var(--title-font);
 }
 
 .app-content-nav-links {
@@ -26,14 +26,19 @@
   top: 0;
   width: 50%;
   height: 100vh;
-  opacity: 0;
-  transform: translateX(100%);
+  opacity: 1;
+  transform: translateX(110%);
   transition: all .3s linear;
 }
+
 .app-content-nav-links.show {
   transform: translateX(0);
   opacity: 1;
 }
+
+/* .icon-nav:hover ~ .app-content-nav-links {
+  transform: translateX(105%);
+} */
 
 .back-menu-style {
   background-color: var(--primary-color);
@@ -42,14 +47,14 @@
   right: 0;
   width: 100%;
   height: 100%;
-  transform: skew(-15deg) scaleX(1.0);
+  transform: skew(-15deg);
   transform-origin: right;
   transition: all .4s linear;
   z-index: 1;
 }
 
 .back-menu-style.show {
-  transform: skew(-15deg) scaleX(1.0);
+  transform: skew(-15deg);
 }
 
 .ul-content-links {
@@ -71,7 +76,7 @@
   color: var(--body-color);
   font-family: var(--title-font);
   font-size: calc(1.3vw + 1em);
-  
+
 }
 
 .icon-nav {
@@ -83,8 +88,10 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  color: var(--body-color);
   z-index: 100;
 }
+
 
 .icon-click-open, .icon-click-close {
   position: absolute;

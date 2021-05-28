@@ -17,8 +17,13 @@ import jsIcon from "../assets/js.inline.svg";
 import reactIcon from "../assets/react.inline.svg";
 import sassIcon from "../assets/sass.inline.svg";
 import ArrowIcon from "../assets/arrow.inline.svg";
+import githubIcon from "../assets/github.inline.svg";
+import linkedinIcon from "../assets/linkedin.inline.svg";
+import twitterIcon from "../assets/twitter.inline.svg";
+import telegramIcon from "../assets/telegram.inline.svg";
 import "@fontsource/karla";
 import "@fontsource/rubik";
+import "@fontsource/saira";
 
 const svgIcons = [
   { name: reactIcon },
@@ -27,6 +32,13 @@ const svgIcons = [
   { name: cssIcon },
   { name: htmlIcon },
   { name: gitIcon },
+];
+
+const socialIcons = [
+  { name: githubIcon, label: "Github" },
+  { name: linkedinIcon, label: "Linkedin" },
+  { name: twitterIcon, label: "Twitter" },
+  { name: telegramIcon, label: "Telegram" },
 ];
 
 const dataWork = [
@@ -55,26 +67,31 @@ const IndexPage = () => {
                 <h1 className={styles.role}>Desarrollador Frontend</h1>
                 <div className={styles.contentButton}>
                   <form className={styles.contentButtonForm}>
-                    <button className={styles.contactButtonHero}>
-                      Contáctame
-                    </button>
+                    <button className={styles.contactButton}>Contáctame</button>
                   </form>
                 </div>
               </div>
               <div className={styles.appContentScrollArrow}>
                 <span className={styles.scrollBack}>
-                  <ArrowIcon/>
+                  <ArrowIcon />
                 </span>
-
               </div>
               {/* <span className={styles.backgroundSectionLeft}></span> */}
             </div>
             <div className={styles.appRightContentHero}>
               <div className={styles.appRightContentHeroImg}>
-                <span className={`${styles.wordsHero} ${styles.top}`}>Responsive Design</span>
-                <span className={`${styles.wordsHero} ${styles.topRight}`}>Px</span>
-                <span className={`${styles.wordsHero} ${styles.bottomRight}`}>Interaction</span>
-                <span className={`${styles.wordsHero} ${styles.bottomLeft}`}>Web</span>
+                <span className={`${styles.wordsHero} ${styles.top}`}>
+                  Responsive Design
+                </span>
+                <span className={`${styles.wordsHero} ${styles.topRight}`}>
+                  Px
+                </span>
+                <span className={`${styles.wordsHero} ${styles.bottomRight}`}>
+                  Interaction
+                </span>
+                <span className={`${styles.wordsHero} ${styles.bottomLeft}`}>
+                  Web
+                </span>
                 {/* <span className={`${styles.wordsHero} ${styles.rigthMiddle}`}>Layout</span> */}
                 <img
                   className={styles.heroImg}
@@ -92,8 +109,8 @@ const IndexPage = () => {
           className={`${styles.wrapperPadding} ${styles.appContentAboutMe}`}
         >
           <div className={styles.appContentAboutMeHeader}>
+            <span className={styles.layerPhoto}></span>
             <div className={styles.appContentAboutMePhoto}>
-              <span className={styles.layerPhoto}></span>
               <img
                 className={styles.photo}
                 src={photoProfile}
@@ -101,9 +118,9 @@ const IndexPage = () => {
               />
             </div>
             <div className={styles.appContentAboutMeTitle}>
-              <span className={styles.spanName}>Hola soy</span>
+              <span className={styles.spanName}>Hola</span>
               {/* <h2 className={styles.h2Name}>Alfredo</h2> */}
-              <h2 className={styles.h2Name}>Alfredo</h2>
+              <h2 className={styles.h2Name}>soy Alfredo</h2>
             </div>
           </div>
           <div className={styles.appContentAboutMeDescription}>
@@ -153,11 +170,14 @@ const IndexPage = () => {
                 Un gusto haberte mostrado una parte mí, saludos !
               </p>
 
-              <div className={styles.contentButtonAbout}>
+              {/* <div className={styles.contentButtonAbout}>
                 <form>
-                  <button className={styles.contactButtonAbout}>
-                    Contáctame
-                  </button>
+                  <button className={styles.contactButton}>Contáctame</button>
+                </form>
+              </div> */}
+              <div className={styles.contentButton}>
+                <form className={styles.contentButtonForm}>
+                  <button className={styles.contactButton}>Contáctame</button>
                 </form>
               </div>
             </div>
@@ -226,14 +246,26 @@ const IndexPage = () => {
             </div>
             <div className={styles.appRightContentChallenge}>
               <div className={styles.appRightContentChallengeImg}>
-                <img src={phoneChallenge} alt="" />
+                <div className={styles.contentLineChallenges}>
+                  <span
+                    className={`${styles.lineChallenge} ${styles.horizontal}`}
+                  ></span>
+                  <span
+                    className={`${styles.lineChallenge} ${styles.vertical}`}
+                  ></span>
+                </div>
+                <img className={styles.imgPhone} src={phoneChallenge} alt="" />
               </div>
             </div>
           </div>
           <div className={styles.contentMoreLink}>
-            <a className={styles.moreLink} href={"#"}>
-              Mas desafíos
-            </a>
+            <div className={styles.contentLinesCustomLink}>
+              <span className={styles.lineCustomLink}></span>
+              <span className={styles.circleCustomLink}></span>
+              <a className={styles.moreLink} href={"#"}>
+                Mas desafíos
+              </a>
+            </div>
           </div>
         </section>
 
@@ -248,18 +280,58 @@ const IndexPage = () => {
                 <div key={work.name} className={styles.contentPersonalProject}>
                   <div className={styles.contentPersonalProjectImg}>
                     <img src={work.name} alt="" />
+                    <span className={styles.backImgPersonal}></span>
                   </div>
                   <div className={styles.contentPersonalProjectDescription}>
-                    <p>{work.description}</p>
+                    {/* <p className>{styles.pDescriptionPersonal}</p> */}
+                    <p className={styles.pDescriptionPersonal}>
+                      {work.description}
+                    </p>
                   </div>
                 </div>
               ))}
+            </div>
+            <div className={styles.contentMoreLink}>
+              <div className={styles.contentLinesCustomLink}>
+                <span className={styles.lineCustomLink}></span>
+                <span className={styles.circleCustomLink}></span>
+                <a className={styles.moreLink} href={"#"}>
+                  Mas trabajos
+                </a>
+              </div>
             </div>
           </div>
         </section>
 
         <section className={`${styles.wrapperPadding}`}>
-          <div className="app-content-footer-form-contact"></div>
+          <div className={styles.appContentFooterFormContact}>
+            <div className={styles.wrapperForm}>
+              <div className={styles.headerContact}>
+                <h4>Trabajemos juntos</h4>
+              </div>
+              <form className={styles.formContact}>
+                <span>Nombre</span>
+                <input placeholder={"Eg. Jhon Doe"}></input>
+                <span>Correo</span>
+                <input placeholder={"Eg. correo@JhonDoe"}></input>
+                <span>Mensaje</span>
+                <input placeholder={"Nos gustaría..."}></input>
+              </form>
+              <div className={styles.contentButton}>
+                <form className={styles.contentButtonForm}>
+                  <button className={styles.contactButton}>Enviar</button>
+                </form>
+              </div>
+              <div className={styles.contentSocial}>
+                {socialIcons.map((icon) => (
+                  <div className={styles.socialItem}>
+                    <icon.name />
+                    <span className={styles.labelSocial}>{icon.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </section>
       </>
     </Layout>
