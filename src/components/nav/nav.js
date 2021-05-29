@@ -25,7 +25,7 @@ const Nav = () => {
   const iconNavStyle = React.useRef(null)
   const iconClose = React.useRef(null)
   React.useState(() => {
-    console.log(iconClose)
+    // console.log(iconClose)
   }, [])
 
   const handleClick = (e) => {
