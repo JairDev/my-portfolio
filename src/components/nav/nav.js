@@ -41,7 +41,7 @@ const Nav = () => {
   } 
 
   return (
-    <header className={appContentNav}>
+    <header id="nav-show" className={appContentNav}>
       <nav className={appNav}>
         <div className="app-content-nav-logo">
           <div className="app-nav-logo">

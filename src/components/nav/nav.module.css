@@ -3,15 +3,20 @@
   /* background-color: var(--body-color); */
   /* box-shadow: 0px 4px 20px 8px rgba(177, 181, 202, .2); */
 
-  padding: 2vh 5vw;
+  padding: 0vh 5vw;
   position: fixed;
+  /* top: 500px; */
+  /* left: 0; */
   width: 100%;
+  /* opacity: 0; */
   z-index: 100;
 }
 
 .app-nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  /* position: fixed; */
 }
 
 .logo-name {
@@ -82,9 +87,10 @@
 }
 
 .icon-nav {
-  /* border: 2px solid brown; */
-  /* width: 100px; */
-  /* height: 100px; */
+  /* border: 1px solid var(--primary-color); */
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
   cursor: pointer;
   display: flex;
   align-items: center;

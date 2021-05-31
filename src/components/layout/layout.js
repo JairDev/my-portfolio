@@ -9,6 +9,7 @@ import {
   navLinks,
   navLinkItem,
   navLinkText,
+  containAll
 } from "./layout.module.css";
 import "../../styles/variables.css";
 
@@ -21,10 +22,12 @@ const Layout = ({ pageTitle, children }) => {
     // console.log(scroll)
   }, []);
   return (
-    <main ref={containerRef} className={container} id="container">
+    <main ref={containerRef} className={container}>
       <title>{pageTitle}</title>
-      <Nav />
-      {children}
+        <Nav />
+      <div className={containAll} id="container">
+        {children}
+      </div>
     </main>
   );
 };

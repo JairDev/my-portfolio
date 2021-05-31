@@ -65,6 +65,7 @@ const dataWork = [
 
 function smoothScroll(content, viewport, smoothness) {
   content = gsap.utils.toArray(content)[0];
+
   smoothness = smoothness || 1;
 
   gsap.set(viewport || content.parentNode, {
@@ -95,6 +96,8 @@ function smoothScroll(content, viewport, smoothness) {
 
   function onResize() {
     height = content.clientHeight;
+    console.log(height)
+    console.log(content)
     content.style.overflow = "visible";
     document.body.style.height = height + "px";
   }
@@ -158,9 +161,10 @@ const IndexPage = () => {
   const spanHola = React.useRef(null);
   const h2Name = React.useRef(null);
   const circleChallenge = React.useRef(null);
+  const phoneRef = React.useRef(null);
+  const codeImgRef = React.useRef(null);
 
   React.useEffect(() => {
-    console.log(animate);
     smoothScroll("#container");
     // const scroll = new LocomotiveScroll();
     // console.log(scroll)
@@ -169,16 +173,31 @@ const IndexPage = () => {
     //   x: 100
 
     // });
-    gsap.to(
-      animate.current,
-      { yPercent: 200, ease: "bounce.out", duration: 1 },
-    );
+    gsap.to(animate.current, {
+      xPercent: 10,
+      yPercent: 530,
+      ease: "bounce.out",
+      opacity: .5,
+      duration: 1,
+      delay: .5
+    });
+    const tlNav = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#nav-show",
+        // pin: true,
+        start: "bottom -=200",
+        end: "top -=500",
+        scrub: true,
+        // markers: true,
+      },
+    });
+    
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: animate.current,
         // pin: true,
-        start: "center 80%",
-        end: "top -=300",
+        start: "center 30%",
+        end: "top -=1300",
         scrub: true,
         // markers: true,
       },
@@ -199,7 +218,7 @@ const IndexPage = () => {
         start: "center 90%",
         end: "top -=300",
         scrub: true,
-        markers: true,
+        // markers: true,
       },
     });
     const tlCircleChallenge = gsap.timeline({
@@ -207,17 +226,52 @@ const IndexPage = () => {
         trigger: circleChallenge.current,
         // pin: true,
         start: "center 50%",
-        end: "top -=300",
+        end: "top -=1200",
         scrub: true,
-        markers: true,
+        // markers: true,
       },
+    });
+    const tlPhone = gsap.timeline({
+      scrollTrigger: {
+        trigger: phoneRef.current,
+        pin: true,
+        start: "center 50%",
+        end: "top -=550",
+        scrub: true,
+        // markers: true,
+      },
+    });
+    const tlCode = gsap.timeline({
+      scrollTrigger: {
+        trigger: codeImgRef.current,
+        // pin: true,
+        start: "center 50%",
+        end: "top -=550",
+        scrub: true,
+        // markers: true,
+      },
+    });
+    tlNav.to("#nav-show", {
+      backgroundColor: "var(--body-color)",
+      boxShadow: "0px 4px 20px 8px rgba(177, 181, 202, .2)", 
+      opacity: 1,
+      duration: 1
+      // yPercent: 100
     });
     tl.to(animate.current, {
       xPercent: 800,
-      yPercent: 800,
-      scale: 3,
+      yPercent: 1400,
+      scale: 1.4,
       opacity: 0.8,
       duration: 1,
+    });
+    tl.to(animate.current, {
+      xPercent: 2300,
+      yPercent: 1800,
+      // scale: 1,
+      opacity: 0.3,
+      duration: 1,
+      delay: 1
     });
     tlHola.to(spanHola.current, {
       // color: "#7C4DFF",
@@ -238,8 +292,8 @@ const IndexPage = () => {
       const tlText = gsap.timeline({
         scrollTrigger: {
           trigger: item,
-          start: "center 98%",
-          end: "bottom 70%",
+          start: "top 98%",
+          end: "center 80%",
           scrub: true,
           // markers: true,
         },
@@ -247,16 +301,39 @@ const IndexPage = () => {
       tlText.from(item, {
         // xPercent: 800,
         opacity: 0,
-        yPercent: 100,
+        yPercent: 50,
       });
     });
     tlCircleChallenge.to(circleChallenge.current, {
-      xPercent: -150,
-      yPercent: 150,
-      scale: 0.4,
-      opacity: 0.3,
+      xPercent: -750,
+      yPercent: 600,
+      scale: 1.4,
+      opacity: 0.8,
       duration: 1,
     });
+    tlCircleChallenge.to(circleChallenge.current, {
+      xPercent: -750,
+      yPercent: 850,
+      // scale: 1,
+      // opacity: 0.8,
+      duration: 1,
+      delay: .5
+    });
+    tlCode.to(codeImgRef.current, {
+      yPercent: 30,
+      duration: 1,
+      // delay: .5
+    });
+    tlCode.to(codeImgRef.current, {
+      yPercent: -10,
+      duration: 1,
+      // delay: .5
+    });
+    // tlNav.to("#nav-show", {
+    //   yPercent: 100,
+    //   duration: 1,
+    //   // delay: .5
+    // });
   }, []);
 
   return (
@@ -278,9 +355,11 @@ const IndexPage = () => {
               </div>
               <div className={styles.appContentScrollArrow}>
                 <span className={styles.scrollBack}>
-                  <span ref={animate} className={styles.scrollBefore}></span>
+                  {/* <span ref={animate} className={styles.scrollBefore}></span> */}
                   <ArrowIcon />
                 </span>
+                <span ref={animate} className={styles.scrollBefore}></span>
+
               </div>
               {/* <span className={styles.backgroundSectionLeft}></span> */}
             </div>
@@ -418,11 +497,11 @@ const IndexPage = () => {
         <section
           className={`${styles.wrapperPadding} ${styles.appContentSkills}`}
         >
-          <h3 className={styles.h3Skills}>Habilidades Actuales</h3>
+          <h3 id="text" className={styles.h3Skills}>Habilidades Actuales</h3>
           <div className={styles.contentSkills}>
             <ul className={styles.contentItemSkills}>
               {svgIcons.map((icon) => (
-                <li className={styles.itemSkills} key={icon.name}>
+                <li id="text" className={styles.itemSkills} key={icon.name}>
                   <icon.name />
                 </li>
               ))}
@@ -437,8 +516,8 @@ const IndexPage = () => {
           <span ref={circleChallenge} className={styles.circleChallenge}></span>
           <div className={styles.appContentChallengesHeader}>
             <div className={styles.appContentChallengesTitle}>
-              <span className={styles.spanChallengeName}>Desafíos</span>
-              <h2 className={styles.h2FrontendName}>Frontend</h2>
+              <span id="text" className={styles.spanChallengeName}>Desafíos</span>
+              <h2 id="text" className={styles.h2FrontendName}>Frontend</h2>
             </div>
           </div>
 
@@ -446,23 +525,23 @@ const IndexPage = () => {
             <div className={styles.wrapperContentChallenge}></div>
             <div className={styles.appLeftContentChallenge}>
               <div className={styles.challengesSubTitle}>
-                <h3 className={styles.h3Challenge}>
+                <h3 id="text" className={styles.h3Challenge}>
                   Busco mejorar mis habilidades como desarrollador frontend, a
                   traves de desafíos del mundo real.
                 </h3>
               </div>
               <div className={styles.challengeDescription}>
-                <span>Desafío: Crear una aplicación de tareas pendientes</span>
-                <span>Dificultad: Intermedio</span>
-                <span>Fuente: frontendmentor.io</span>
+                <span id="text">Desafío: Crear una aplicación de tareas pendientes</span>
+                <span id="text">Dificultad: Intermedio</span>
+                <span id="text">Fuente: frontendmentor.io</span>
               </div>
               <div className={styles.challengeCodeImg}>
                 <div className={styles.wrapperCodeImg}>
-                  <img src={codeChallenge} alt="" />
+                  <img ref={codeImgRef} src={codeChallenge} alt="" />
                 </div>
               </div>
               <div className={styles.challengeMyExplanation}>
-                <p className={styles.pMyExplanation}>
+                <p id="text" className={styles.pMyExplanation}>
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry. Lorem Ipsum has been the industry's
                   standard dummy text ever since the 1500s, when an unknown
@@ -486,7 +565,7 @@ const IndexPage = () => {
                     className={`${styles.lineChallenge} ${styles.vertical}`}
                   ></span>
                 </div>
-                <img className={styles.imgPhone} src={phoneChallenge} alt="" />
+                <img ref={phoneRef} className={styles.imgPhone} src={phoneChallenge} alt="" />
               </div>
             </div>
           </div>
@@ -504,19 +583,19 @@ const IndexPage = () => {
         <section className={`${styles.wrapperPadding}`}>
           <div className={styles.appContentPersonalProjectsHeader}>
             <div className={styles.appContentPersonalProjectsTitle}>
-              <span className={styles.spanWorkName}>Proyectos</span>
-              <h2 className={styles.h2WorkName}>Personales</h2>
+              <span id="text" className={styles.spanWorkName}>Proyectos</span>
+              <h2 id="text" className={styles.h2WorkName}>Personales</h2>
             </div>
             <div className={styles.wrapperPersonalProjects}>
               {dataWork.map((work) => (
                 <div key={work.name} className={styles.contentPersonalProject}>
-                  <div className={styles.contentPersonalProjectImg}>
+                  <div id="text" className={styles.contentPersonalProjectImg}>
                     <img src={work.name} alt="" />
                     <span className={styles.backImgPersonal}></span>
                   </div>
                   <div className={styles.contentPersonalProjectDescription}>
                     {/* <p className>{styles.pDescriptionPersonal}</p> */}
-                    <p className={styles.pDescriptionPersonal}>
+                    <p id="text" className={styles.pDescriptionPersonal}>
                       {work.description}
                     </p>
                   </div>
