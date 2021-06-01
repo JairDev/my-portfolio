@@ -1,7 +1,9 @@
 import * as React from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
+import Scrollbar from "smooth-scrollbar";
+// import * as PIXI from 'pixi.js'
+// import ASScroll from "@ashthornton/asscroll";
 // import locomotiveScroll from "locomotive-scroll"
 
 // import { gsap } from "gsap";
@@ -31,8 +33,14 @@ import telegramIcon from "../assets/telegram.inline.svg";
 import "@fontsource/karla";
 import "@fontsource/rubik";
 import "@fontsource/saira";
+import Project from "../components/projects/projects";
 
 gsap.registerPlugin(ScrollTrigger);
+// const asscroll = new ASScroll();
+
+// window.addEventListener('load', () => {
+//     asscroll.enable()
+// })
 
 const svgIcons = [
   { name: reactIcon },
@@ -95,10 +103,10 @@ function smoothScroll(content, viewport, smoothness) {
     isProxyScrolling;
 
   function onResize() {
-    height = content.clientHeight;
-    console.log(height)
-    console.log(content)
-    content.style.overflow = "visible";
+    height = content.clientHeight + 150;
+    console.log(height);
+    console.log(content);
+    // content.style.overflow = "visible";
     document.body.style.height = height + "px";
   }
   onResize();
@@ -155,43 +163,93 @@ function smoothScroll(content, viewport, smoothness) {
   });
 }
 
+// pixijs////////////////////
+
+// const app = new PIXI.Application({ backgroundColor: 0x1099bb });
+// document.body.appendChild(app.view);
+
+// const container = new PIXI.Container();
+// app.stage.addChild(container);
+
+// const texture = PIXI.Texture.from("examples/assets/bunny.png");
+
+// for (let i = 0; i < 25; i++) {
+//   const bunny = new PIXI.Sprite(texture);
+//   bunny.x = (i % 5) * 30;
+//   bunny.y = Math.floor(i / 5) * 30;
+//   bunny.rotation = Math.random() * (Math.PI * 2);
+//   container.addChild(bunny);
+// }
+
+// const brt = new PIXI.BaseRenderTexture(300, 300, PIXI.SCALE_MODES.LINEAR, 1);
+// const rt = new PIXI.RenderTexture(brt);
+
+// const sprite = new PIXI.Sprite(rt);
+
+// sprite.x = 450;
+// sprite.y = 60;
+// app.stage.addChild(sprite);
+
+/*
+ * All the bunnies are added to the container with the addChild method
+ * when you do this, all the bunnies become children of the container, and when a container moves,
+ * so do all its children.
+ * This gives you a lot of flexibility and makes it easier to position elements on the screen
+ */
+// container.x = 100;
+// container.y = 60;
+
+// app.ticker.add(() => {
+//   app.renderer.render(container, rt);
+// });
+
+
+
 const IndexPage = () => {
   const animate = React.useRef(null);
   const word = React.useRef(null);
-  const spanHola = React.useRef(null);
   const h2Name = React.useRef(null);
   const circleChallenge = React.useRef(null);
   const phoneRef = React.useRef(null);
   const codeImgRef = React.useRef(null);
+  const circleLinkRef = React.useRef(null);
 
   React.useEffect(() => {
-    smoothScroll("#container");
-    // const scroll = new LocomotiveScroll();
-    // console.log(scroll)
-    // gsap.to(animate.current, {
-    //   scrollTrigger: animate.current,
-    //   x: 100
-
+    console.log("ready");
+    // const asscroll = new ASScroll();
+    // window.addEventListener("load", () => {
+    //   asscroll.enable();
     // });
+    smoothScroll("#container");
+    // Scrollbar.init(document.querySelector('#container'));
     gsap.to(animate.current, {
       xPercent: 10,
       yPercent: 530,
       ease: "bounce.out",
-      opacity: .5,
+      opacity: 0.5,
       duration: 1,
-      delay: .5
+      delay: 0.5,
     });
     const tlNav = gsap.timeline({
       scrollTrigger: {
         trigger: "#nav-show",
         // pin: true,
-        start: "bottom -=200",
-        end: "top -=500",
+        start: "bottom -=100",
+        end: "top -=800",
         scrub: true,
         // markers: true,
       },
     });
-    
+    const tlNavHidden = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#nav-hidden",
+        // pin: true,
+        start: "bottom -=100",
+        end: "top -=800",
+        scrub: true,
+        // markers: true,
+      },
+    });
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: animate.current,
@@ -207,16 +265,6 @@ const IndexPage = () => {
         trigger: "#text",
         start: "center 90%",
         end: "bottom center",
-        scrub: true,
-        // markers: true,
-      },
-    });
-    const tlHola = gsap.timeline({
-      scrollTrigger: {
-        trigger: spanHola.current,
-        // pin: true,
-        start: "center 90%",
-        end: "top -=300",
         scrub: true,
         // markers: true,
       },
@@ -251,12 +299,44 @@ const IndexPage = () => {
         // markers: true,
       },
     });
+    const tlCircleLink = gsap.timeline({
+      scrollTrigger: {
+        trigger: circleLinkRef.current,
+        // pin: true,
+        start: "center 80%",
+        end: "top -=200",
+        scrub: true,
+        // markers: true,
+      },
+    });
+    // animations////////////////
+    tlNavHidden.to("#nav-hidden", {
+      // backgroundColor: "var(--body-color)",
+      // boxShadow: "0px 4px 20px 8px rgba(177, 181, 202, .2)",
+      yPercent: -100,
+      opacity: 1,
+      duration: 1,
+    });
     tlNav.to("#nav-show", {
       backgroundColor: "var(--body-color)",
-      boxShadow: "0px 4px 20px 8px rgba(177, 181, 202, .2)", 
+      boxShadow: "0px 4px 20px 8px rgba(177, 181, 202, .2)",
+      yPercent: -100,
+      // opacity: 1,
+      duration: 1,
+    });
+    tlNav.to("#nav-show", {
+      backgroundColor: "var(--body-color)",
+      boxShadow: "0px 4px 20px 8px rgba(177, 181, 202, .2)",
+      yPercent: 0,
       opacity: 1,
-      duration: 1
-      // yPercent: 100
+      // duration: 1,
+    });
+    tlNavHidden.to("#nav-hidden", {
+      // backgroundColor: "var(--body-color)",
+      // boxShadow: "0px 4px 20px 8px rgba(177, 181, 202, .2)",
+      yPercent: 0,
+      opacity: 1,
+      duration: 1,
     });
     tl.to(animate.current, {
       xPercent: 800,
@@ -266,26 +346,14 @@ const IndexPage = () => {
       duration: 1,
     });
     tl.to(animate.current, {
-      xPercent: 2300,
+      xPercent: 1200,
       yPercent: 1800,
-      // scale: 1,
       opacity: 0.3,
       duration: 1,
-      delay: 1
+      delay: 1,
     });
-    tlHola.to(spanHola.current, {
-      // color: "#7C4DFF",
-    });
-    // tl.to(animate.current, {
-    //   xPercent: 800,
-    //   yPercent: 1000,
-    //   scale: 3,
-    //   duration: 1,
-    // });
     tlw.to(word.current, {
-      // xPercent: 800,
       yPercent: -50,
-      // opacity: 0,
       duration: 1,
     });
     gsap.utils.toArray("#text").forEach((item) => {
@@ -317,7 +385,7 @@ const IndexPage = () => {
       // scale: 1,
       // opacity: 0.8,
       duration: 1,
-      delay: .5
+      delay: 0.5,
     });
     tlCode.to(codeImgRef.current, {
       yPercent: 30,
@@ -329,11 +397,11 @@ const IndexPage = () => {
       duration: 1,
       // delay: .5
     });
-    // tlNav.to("#nav-show", {
-    //   yPercent: 100,
-    //   duration: 1,
-    //   // delay: .5
-    // });
+    tlCircleLink.to(circleLinkRef.current, {
+      yPercent: 800,
+      // duration: .5,
+      // delay: .5
+    });
   }, []);
 
   return (
@@ -359,7 +427,6 @@ const IndexPage = () => {
                   <ArrowIcon />
                 </span>
                 <span ref={animate} className={styles.scrollBefore}></span>
-
               </div>
               {/* <span className={styles.backgroundSectionLeft}></span> */}
             </div>
@@ -409,11 +476,7 @@ const IndexPage = () => {
               />
             </div>
             <div className={styles.appContentAboutMeTitle}>
-              <span
-                id="text"
-                ref={spanHola}
-                className={`${styles.text} ${styles.spanName}`}
-              >
+              <span id="text" className={`${styles.text} ${styles.spanName}`}>
                 Hola
               </span>
               {/* <h2 className={styles.h2Name}>Alfredo</h2> */}
@@ -497,7 +560,9 @@ const IndexPage = () => {
         <section
           className={`${styles.wrapperPadding} ${styles.appContentSkills}`}
         >
-          <h3 id="text" className={styles.h3Skills}>Habilidades Actuales</h3>
+          <h3 id="text" className={styles.h3Skills}>
+            Habilidades Actuales
+          </h3>
           <div className={styles.contentSkills}>
             <ul className={styles.contentItemSkills}>
               {svgIcons.map((icon) => (
@@ -516,8 +581,12 @@ const IndexPage = () => {
           <span ref={circleChallenge} className={styles.circleChallenge}></span>
           <div className={styles.appContentChallengesHeader}>
             <div className={styles.appContentChallengesTitle}>
-              <span id="text" className={styles.spanChallengeName}>Desafíos</span>
-              <h2 id="text" className={styles.h2FrontendName}>Frontend</h2>
+              <span id="text" className={styles.spanChallengeName}>
+                Desafíos
+              </span>
+              <h2 id="text" className={styles.h2FrontendName}>
+                Frontend
+              </h2>
             </div>
           </div>
 
@@ -531,7 +600,9 @@ const IndexPage = () => {
                 </h3>
               </div>
               <div className={styles.challengeDescription}>
-                <span id="text">Desafío: Crear una aplicación de tareas pendientes</span>
+                <span id="text">
+                  Desafío: Crear una aplicación de tareas pendientes
+                </span>
                 <span id="text">Dificultad: Intermedio</span>
                 <span id="text">Fuente: frontendmentor.io</span>
               </div>
@@ -565,7 +636,12 @@ const IndexPage = () => {
                     className={`${styles.lineChallenge} ${styles.vertical}`}
                   ></span>
                 </div>
-                <img ref={phoneRef} className={styles.imgPhone} src={phoneChallenge} alt="" />
+                <img
+                  ref={phoneRef}
+                  className={styles.imgPhone}
+                  src={phoneChallenge}
+                  alt=""
+                />
               </div>
             </div>
           </div>
@@ -573,47 +649,21 @@ const IndexPage = () => {
             <div className={styles.contentLinesCustomLink}>
               <span className={styles.lineCustomLink}></span>
               <span className={styles.circleCustomLink}></span>
+              <span
+                ref={circleLinkRef}
+                className={styles.circleCustomLinkAnimate}
+              ></span>
               <a className={styles.moreLink} href={"#"}>
                 Mas desafíos
               </a>
             </div>
           </div>
         </section>
-
-        <section className={`${styles.wrapperPadding}`}>
-          <div className={styles.appContentPersonalProjectsHeader}>
-            <div className={styles.appContentPersonalProjectsTitle}>
-              <span id="text" className={styles.spanWorkName}>Proyectos</span>
-              <h2 id="text" className={styles.h2WorkName}>Personales</h2>
-            </div>
-            <div className={styles.wrapperPersonalProjects}>
-              {dataWork.map((work) => (
-                <div key={work.name} className={styles.contentPersonalProject}>
-                  <div id="text" className={styles.contentPersonalProjectImg}>
-                    <img src={work.name} alt="" />
-                    <span className={styles.backImgPersonal}></span>
-                  </div>
-                  <div className={styles.contentPersonalProjectDescription}>
-                    {/* <p className>{styles.pDescriptionPersonal}</p> */}
-                    <p id="text" className={styles.pDescriptionPersonal}>
-                      {work.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className={styles.contentMoreLink}>
-              <div className={styles.contentLinesCustomLink}>
-                <span className={styles.lineCustomLink}></span>
-                <span className={styles.circleCustomLink}></span>
-                <a className={styles.moreLink} href={"#"}>
-                  Mas trabajos
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
+        <Project
+          projectsArray={dataWork}
+          title={"Proyectos"}
+          subTitle={"Personales"}
+        />
         <section className={`${styles.wrapperPadding}`}>
           <div className={styles.appContentFooterFormContact}>
             <div className={styles.wrapperForm}>

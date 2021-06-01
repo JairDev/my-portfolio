@@ -13,7 +13,8 @@ import {
   show,
   iconClickOpen,
   iconClickClose,
-  open
+  open,
+  spanStyleNav
 } from "./nav.module.css";
 import NavIcon from "../../assets/nav-bar-icon.inline.svg";
 import NavIconClose from "../../assets/nav-bar-close.inline.svg";
@@ -41,7 +42,8 @@ const Nav = () => {
   } 
 
   return (
-    <header id="nav-show" className={appContentNav}>
+    <header id="nav-hidden"  className={appContentNav}>
+      <span id="nav-show" className={spanStyleNav}></span>
       <nav className={appNav}>
         <div className="app-content-nav-logo">
           <div className="app-nav-logo">

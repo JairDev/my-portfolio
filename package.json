@@ -15,6 +15,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@ashthornton/asscroll": "^2.0.1",
     "@fontsource/karla": "^4.3.0",
     "@fontsource/rubik": "^4.3.0",
     "@fontsource/saira": "^4.4.0",
@@ -27,7 +28,9 @@
     "gatsby-transformer-sharp": "^3.5.0",
     "gsap": "^3.6.1",
     "locomotive-scroll": "^4.1.1",
+    "pixi.js": "^6.0.4",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "smooth-scrollbar": "^8.6.2"
   }
 }
