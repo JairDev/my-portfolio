@@ -17,9 +17,9 @@ const Project = ({ projectsArray, title, subTitle }) => {
           <div className={styles.wrapperPersonalProjects}>
             {projectsArray.map((work) => (
               <>
-                <div>
+                <div key={work.name}>
                   <div
-                    key={work.name}
+                    
                     className={styles.contentPersonalProject}
                   >
                     <div id="text" className={styles.contentPersonalProjectImg}>

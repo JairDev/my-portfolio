@@ -2,6 +2,8 @@ import * as React from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Scrollbar from "smooth-scrollbar";
+import Helmet from "react-helmet";
+// import fit from "math-fit";
 // import * as PIXI from 'pixi.js'
 // import ASScroll from "@ashthornton/asscroll";
 // import locomotiveScroll from "locomotive-scroll"
@@ -30,10 +32,12 @@ import githubIcon from "../assets/github.inline.svg";
 import linkedinIcon from "../assets/linkedin.inline.svg";
 import twitterIcon from "../assets/twitter.inline.svg";
 import telegramIcon from "../assets/telegram.inline.svg";
+import blurry from "../images/blurry.png";
 import "@fontsource/karla";
 import "@fontsource/rubik";
 import "@fontsource/saira";
 import Project from "../components/projects/projects";
+// import { Sprite } from "@pixi/sprite";
 
 gsap.registerPlugin(ScrollTrigger);
 // const asscroll = new ASScroll();
@@ -104,8 +108,8 @@ function smoothScroll(content, viewport, smoothness) {
 
   function onResize() {
     height = content.clientHeight + 150;
-    console.log(height);
-    console.log(content);
+    // console.log(height);
+    // console.log(content);
     // content.style.overflow = "visible";
     document.body.style.height = height + "px";
   }
@@ -164,14 +168,13 @@ function smoothScroll(content, viewport, smoothness) {
 }
 
 // pixijs////////////////////
-
 // const app = new PIXI.Application({ backgroundColor: 0x1099bb });
 // document.body.appendChild(app.view);
 
 // const container = new PIXI.Container();
 // app.stage.addChild(container);
 
-// const texture = PIXI.Texture.from("examples/assets/bunny.png");
+// const texture = PIXI.Texture.from("examples/assets/sprite.png");
 
 // for (let i = 0; i < 25; i++) {
 //   const bunny = new PIXI.Sprite(texture);
@@ -203,8 +206,6 @@ function smoothScroll(content, viewport, smoothness) {
 //   app.renderer.render(container, rt);
 // });
 
-
-
 const IndexPage = () => {
   const animate = React.useRef(null);
   const word = React.useRef(null);
@@ -215,13 +216,114 @@ const IndexPage = () => {
   const circleLinkRef = React.useRef(null);
 
   React.useEffect(() => {
-    console.log("ready");
-    // const asscroll = new ASScroll();
-    // window.addEventListener("load", () => {
-    //   asscroll.enable();
-    // });
+    // console.log(pixi)
+    // const PIXI = window.PIXI;
+    // const app = new PIXI.Application({ backgroundColor: 0x1099bb });
+    // document.body.appendChild(app.view);
+
+    // app.stage.addChild(container);
+
+    // const texture = PIXI.Texture.from(blurry);
+
+    // class Sketch {
+    //   constructor() {
+    //     this.images = [blurry, phoneChallenge, photoProfile];
+    //     this.margin = 5;
+    //     this.width = window.innerWidth - 200 * this.margin;
+    //     this.height = window.innerHeight * 0.8;
+    //     this.app = new PIXI.Application({
+    //       backgroundColor: 0x1099bb,
+    //       resizeTo: window,
+    //       // width:600,
+    //       // height:600,
+    //       // transparent: true
+    //     });
+    //     document.body.appendChild(this.app.view);
+    //     this.container = new PIXI.Container();
+    //     this.app.stage.addChild(this.container);
+    //     this.add();
+    //     this.render();
+    //     // this.img = [blurry, phoneChallenge, photoProfile]
+    //   }
+
+    //   add() {
+    //     let parent = {
+    //       w: this.width,
+    //       h: this.height,
+    //     };
+    //     this.images.forEach((img, i) => {
+    //       let texture = PIXI.Texture.from(img);
+    //       const sprite = new PIXI.Sprite(texture);
+    //       let container = new PIXI.Container();
+    //       let spriteContainer = new PIXI.Container();
+    //       // let mask = new PIXI.Sprite(PIXI.Texture.WHITE)
+    //       // mask.width =  this.width
+    //       // mask.height =  this.height
+    //       // console.log(sprite)
+    //       sprite.scale.x = 1.1;
+    //       sprite.scale.y = 1.1
+    //       // sprite.anchor.set(0.5)
+    //       // sprite.position.set(
+    //       //   sprite.texture.orig.width / 2,
+    //       //   sprite.texture.orig.height / 2
+    //       // );
+
+    //       sprite.position.set(
+    //         50,
+    //         50
+    //       );
+          
+    //       let image = {
+    //         w: sprite.texture.orig.width,
+    //         h: sprite.texture.orig.height,
+    //       };
+
+    //       // let image = {
+    //       //   w: 200,
+    //       //   h: 200,
+    //       // };
+
+    //       let cover = fit(image, parent);
+    //       // console.log(sprite.texture.orig.width)
+    //       // console.log(sprite.texture.orig.height)
+    //       // console.log("this", this.width)
+    //       console.log(image)
+    //       console.log(fit)
+    //       console.log(cover)
+    //       // spriteContainer.position.set(cover.left, cover.top);
+    //       // spriteContainer.scale.set(cover.scale, cover.scale);
+
+    //       container.x = (this.margin + this.width) * i;
+    //       container.y = this.height / 10;
+    //       // console.log(container.x)
+    //       // console.log(container.y)
+    //       // console.log(spriteContainer);
+    //       spriteContainer.addChild(sprite);
+    //       container.addChild(spriteContainer);
+    //       // container.addChild(mask);
+    //       this.container.addChild(container);
+    //     });
+
+    //     // for (let i = 0; i < 25; i++) {
+    //     //   const sprite = new PIXI.Sprite(texture);
+    //     //   sprite.width = 20;
+    //     //   sprite.height = 20;
+    //     //   sprite.x = (i % 5) * 30;
+    //     //   sprite.y = Math.floor(i / 5) * 30;
+    //     //   sprite.rotation = Math.random() * (Math.PI * 2);
+    //     //   this.container.addChild(sprite);
+    //     // }
+    //   }
+    //   render() {
+    //     this.app.ticker.add(() => {
+    //       this.app.renderer.render(this.container);
+    //     });
+    //   }
+    // }
+
+    // new Sketch();
+
     smoothScroll("#container");
-    // Scrollbar.init(document.querySelector('#container'));
     gsap.to(animate.current, {
       xPercent: 10,
       yPercent: 530,
@@ -407,6 +509,9 @@ const IndexPage = () => {
   return (
     <Layout pageTitle={"Home Page"}>
       <>
+        {/* <Helmet>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.1.3/pixi.min.js"></script>
+        </Helmet> */}
         <section
           className={`${styles.wrapperPadding} ${styles.appContentHero}`}
           id={"wrapper-padding"}
@@ -559,7 +664,12 @@ const IndexPage = () => {
 
         <section
           className={`${styles.wrapperPadding} ${styles.appContentSkills}`}
+          id="insert-canvas"
         >
+          <span className={styles.containBlurry}>
+            <img alt="" src={blurry} />
+          </span>
+
           <h3 id="text" className={styles.h3Skills}>
             Habilidades Actuales
           </h3>

@@ -11,6 +11,13 @@ body {
   height: 100%;
 }
 
+canvas {
+  display: block;
+  width: 100%;
+  border: 5px solid red;
+  /* height: 350vh; */
+}
+
 .wrapper-padding {
   padding: 5vh 5vw;
   /* overflow: hidden; */
@@ -428,11 +435,30 @@ body {
 /* skills */
 
 .app-content-skills {
-  /* border: 2px solid blue; */
+  /* border: 2px solid rgb(25, 241, 108); */
   background-color: var(--primary-color);
   color: var(--body-color);
   padding: 10vh 0;
   text-align: center;
+  position: relative;
+}
+
+.contain-blurry {
+  /* border: 2px solid greenyellow; */
+  /* background: url("../assets/blurry.inline.svg"); */
+  /* background-color: red; */
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.contain-blurry img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .h3-skills {

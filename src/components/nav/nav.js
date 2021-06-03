@@ -14,35 +14,40 @@ import {
   iconClickOpen,
   iconClickClose,
   open,
-  spanStyleNav
+  noOpen,
+  spanStyleNav,
+  parentIconClose,
+  parentIconOpen
 } from "./nav.module.css";
 import NavIcon from "../../assets/nav-bar-icon.inline.svg";
 import NavIconClose from "../../assets/nav-bar-close.inline.svg";
 
 const Nav = () => {
-
-  let state = false
-  const menuStyle = React.useRef(null)
-  const iconNavStyle = React.useRef(null)
-  const iconClose = React.useRef(null)
-  React.useState(() => {
-    // console.log(iconClose)
-  }, [])
+  let state = false;
+  const menuStyle = React.useRef(null);
+  const iconOpenRef = React.useRef(null);
+  const iconCloseRef = React.useRef(null);
+  React.useEffect(() => {
+    console.log(iconOpenRef.current.firstChild);
+    console.log(iconCloseRef);
+    return () => {};
+  }, []);
 
   const handleClick = (e) => {
-    state = !state
-    if(state) {
-      menuStyle.current.classList.add(show)
-      // iconClose.current.classList.add(open)
-    }else {
-      menuStyle.current.classList.remove(show)
+    state = !state;
+    if (state) {
+      menuStyle.current.classList.add(show);
+      iconOpenRef.current.firstChild.classList.add(noOpen)
+      iconCloseRef.current.firstChild.classList.add(open)
+    } else {
+      menuStyle.current.classList.remove(show);
+      iconOpenRef.current.firstChild.classList.remove(noOpen)
+      iconCloseRef.current.firstChild.classList.remove(open)
     }
-    // console.log(state)
-    // console.log(spanMenuStyle.current)
-  } 
+  };
 
   return (
-    <header id="nav-hidden"  className={appContentNav}>
+    <header id="nav-hidden" className={appContentNav}>
       <span id="nav-show" className={spanStyleNav}></span>
       <nav className={appNav}>
         <div className="app-content-nav-logo">
@@ -52,9 +57,16 @@ const Nav = () => {
             </Link>
           </div>
         </div>
-        <div  className={iconNav}>
-          <NavIcon className={iconClickOpen} onClick={handleClick}/>
-          <NavIconClose className={iconClickClose}/>
+        <div onClick={handleClick} className={iconNav}>
+          <div ref={iconOpenRef} className={parentIconOpen}>
+            <NavIcon
+              className={iconClickOpen}
+              
+            />
+          </div>
+          <div ref={iconCloseRef} className={parentIconClose}>
+            <NavIconClose className={iconClickClose} />
+          </div>
         </div>
         <div ref={menuStyle} className={appContentNavLinks}>
           <ul className={ulContentLinks}>

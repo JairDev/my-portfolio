@@ -7,6 +7,7 @@ module.exports = {
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
+    `gatsby-plugin-react-helmet`,
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -22,6 +23,6 @@ module.exports = {
           include: /\.inline\.svg$/, // See below to configure properly
         },
       },
-    }
+    },
   ],
 };

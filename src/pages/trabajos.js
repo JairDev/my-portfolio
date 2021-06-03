@@ -22,7 +22,7 @@ const dataWork = [
   },
 ];
 
-const Trabajos = () => {
+const Challenges = () => {
   React.useEffect(() => {
     smoothScroll("#container")
   }, [])
@@ -130,4 +130,4 @@ function smoothScroll(content, viewport, smoothness) {
   });
 }
 
-export default Trabajos;
+export default Challenges;
