@@ -40,7 +40,6 @@ const Challenges = () => {
 
 function smoothScroll(content, viewport, smoothness) {
   content = gsap.utils.toArray(content)[0];
-
   smoothness = smoothness || 1;
 
   gsap.set(viewport || content.parentNode, {

@@ -28,8 +28,6 @@ const Nav = () => {
   const iconOpenRef = React.useRef(null);
   const iconCloseRef = React.useRef(null);
   React.useEffect(() => {
-    console.log(iconOpenRef.current.firstChild);
-    console.log(iconCloseRef);
     return () => {};
   }, []);
 

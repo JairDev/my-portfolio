@@ -3,13 +3,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Scrollbar from "smooth-scrollbar";
 import Helmet from "react-helmet";
-// import fit from "math-fit";
-// import * as PIXI from 'pixi.js'
-// import ASScroll from "@ashthornton/asscroll";
-// import locomotiveScroll from "locomotive-scroll"
-
-// import { gsap } from "gsap";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
 // import { Link } from "gatsby";
 import Layout from "../components/layout/layout";
 import * as styles from "./index.module.css";
@@ -37,14 +30,8 @@ import "@fontsource/karla";
 import "@fontsource/rubik";
 import "@fontsource/saira";
 import Project from "../components/projects/projects";
-// import { Sprite } from "@pixi/sprite";
 
 gsap.registerPlugin(ScrollTrigger);
-// const asscroll = new ASScroll();
-
-// window.addEventListener('load', () => {
-//     asscroll.enable()
-// })
 
 const svgIcons = [
   { name: reactIcon },
@@ -77,9 +64,9 @@ const dataWork = [
 
 function smoothScroll(content, viewport, smoothness) {
   content = gsap.utils.toArray(content)[0];
-
   smoothness = smoothness || 1;
-
+  const contentHeight = content.clientHeight
+  // console.log(content.clientHeight)
   gsap.set(viewport || content.parentNode, {
     overflow: "hidden",
     position: "fixed",
@@ -107,13 +94,13 @@ function smoothScroll(content, viewport, smoothness) {
     isProxyScrolling;
 
   function onResize() {
-    height = content.clientHeight + 150;
-    // console.log(height);
-    // console.log(content);
-    // content.style.overflow = "visible";
+    height = content.clientHeight;
+    console.log(content);
+    console.log("onRezise",height);
     document.body.style.height = height + "px";
   }
   onResize();
+
   ScrollTrigger.addEventListener("refreshInit", onResize);
   ScrollTrigger.addEventListener("refresh", () => {
     removeScroll();
@@ -167,47 +154,9 @@ function smoothScroll(content, viewport, smoothness) {
   });
 }
 
-// pixijs////////////////////
-// const app = new PIXI.Application({ backgroundColor: 0x1099bb });
-// document.body.appendChild(app.view);
-
-// const container = new PIXI.Container();
-// app.stage.addChild(container);
-
-// const texture = PIXI.Texture.from("examples/assets/sprite.png");
-
-// for (let i = 0; i < 25; i++) {
-//   const bunny = new PIXI.Sprite(texture);
-//   bunny.x = (i % 5) * 30;
-//   bunny.y = Math.floor(i / 5) * 30;
-//   bunny.rotation = Math.random() * (Math.PI * 2);
-//   container.addChild(bunny);
-// }
-
-// const brt = new PIXI.BaseRenderTexture(300, 300, PIXI.SCALE_MODES.LINEAR, 1);
-// const rt = new PIXI.RenderTexture(brt);
-
-// const sprite = new PIXI.Sprite(rt);
-
-// sprite.x = 450;
-// sprite.y = 60;
-// app.stage.addChild(sprite);
-
-/*
- * All the bunnies are added to the container with the addChild method
- * when you do this, all the bunnies become children of the container, and when a container moves,
- * so do all its children.
- * This gives you a lot of flexibility and makes it easier to position elements on the screen
- */
-// container.x = 100;
-// container.y = 60;
-
-// app.ticker.add(() => {
-//   app.renderer.render(container, rt);
-// });
 
 const IndexPage = () => {
-  const animate = React.useRef(null);
+  const animateBallHero = React.useRef(null);
   const word = React.useRef(null);
   const h2Name = React.useRef(null);
   const circleChallenge = React.useRef(null);
@@ -216,115 +165,13 @@ const IndexPage = () => {
   const circleLinkRef = React.useRef(null);
 
   React.useEffect(() => {
-    // console.log(pixi)
-    // const PIXI = window.PIXI;
-    // const app = new PIXI.Application({ backgroundColor: 0x1099bb });
-    // document.body.appendChild(app.view);
+    // smoothScroll("#container");
 
-    // app.stage.addChild(container);
-
-    // const texture = PIXI.Texture.from(blurry);
-
-    // class Sketch {
-    //   constructor() {
-    //     this.images = [blurry, phoneChallenge, photoProfile];
-    //     this.margin = 5;
-    //     this.width = window.innerWidth - 200 * this.margin;
-    //     this.height = window.innerHeight * 0.8;
-    //     this.app = new PIXI.Application({
-    //       backgroundColor: 0x1099bb,
-    //       resizeTo: window,
-    //       // width:600,
-    //       // height:600,
-    //       // transparent: true
-    //     });
-    //     document.body.appendChild(this.app.view);
-    //     this.container = new PIXI.Container();
-    //     this.app.stage.addChild(this.container);
-    //     this.add();
-    //     this.render();
-    //     // this.img = [blurry, phoneChallenge, photoProfile]
-    //   }
-
-    //   add() {
-    //     let parent = {
-    //       w: this.width,
-    //       h: this.height,
-    //     };
-    //     this.images.forEach((img, i) => {
-    //       let texture = PIXI.Texture.from(img);
-    //       const sprite = new PIXI.Sprite(texture);
-    //       let container = new PIXI.Container();
-    //       let spriteContainer = new PIXI.Container();
-    //       // let mask = new PIXI.Sprite(PIXI.Texture.WHITE)
-    //       // mask.width =  this.width
-    //       // mask.height =  this.height
-    //       // console.log(sprite)
-    //       sprite.scale.x = 1.1;
-    //       sprite.scale.y = 1.1
-    //       // sprite.anchor.set(0.5)
-    //       // sprite.position.set(
-    //       //   sprite.texture.orig.width / 2,
-    //       //   sprite.texture.orig.height / 2
-    //       // );
-
-    //       sprite.position.set(
-    //         50,
-    //         50
-    //       );
-          
-    //       let image = {
-    //         w: sprite.texture.orig.width,
-    //         h: sprite.texture.orig.height,
-    //       };
-
-    //       // let image = {
-    //       //   w: 200,
-    //       //   h: 200,
-    //       // };
-
-    //       let cover = fit(image, parent);
-    //       // console.log(sprite.texture.orig.width)
-    //       // console.log(sprite.texture.orig.height)
-    //       // console.log("this", this.width)
-    //       console.log(image)
-    //       console.log(fit)
-    //       console.log(cover)
-    //       // spriteContainer.position.set(cover.left, cover.top);
-    //       // spriteContainer.scale.set(cover.scale, cover.scale);
-
-    //       container.x = (this.margin + this.width) * i;
-    //       container.y = this.height / 10;
-    //       // console.log(container.x)
-    //       // console.log(container.y)
-    //       // console.log(spriteContainer);
-    //       spriteContainer.addChild(sprite);
-    //       container.addChild(spriteContainer);
-    //       // container.addChild(mask);
-    //       this.container.addChild(container);
-    //     });
-
-    //     // for (let i = 0; i < 25; i++) {
-    //     //   const sprite = new PIXI.Sprite(texture);
-    //     //   sprite.width = 20;
-    //     //   sprite.height = 20;
-    //     //   sprite.x = (i % 5) * 30;
-    //     //   sprite.y = Math.floor(i / 5) * 30;
-    //     //   sprite.rotation = Math.random() * (Math.PI * 2);
-    //     //   this.container.addChild(sprite);
-    //     // }
-    //   }
-    //   render() {
-    //     this.app.ticker.add(() => {
-    //       this.app.renderer.render(this.container);
-    //     });
-    //   }
-    // }
-
-    // new Sketch();
-
-    smoothScroll("#container");
-    gsap.to(animate.current, {
+    // const a = document.getElementById("container");
+    // console.log(a);
+    // console.log(a.clientHeight);
+    // console.log(document.body.clientHeight)
+    gsap.to(animateBallHero.current, {
       xPercent: 10,
       yPercent: 530,
       ease: "bounce.out",
@@ -354,7 +201,7 @@ const IndexPage = () => {
     });
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: animate.current,
+        trigger: animateBallHero.current,
         // pin: true,
         start: "center 30%",
         end: "top -=1300",
@@ -440,16 +287,16 @@ const IndexPage = () => {
       opacity: 1,
       duration: 1,
     });
-    tl.to(animate.current, {
+    tl.to(animateBallHero.current, {
       xPercent: 800,
-      yPercent: 1400,
+      yPercent: 1200,
       scale: 1.4,
       opacity: 0.8,
       duration: 1,
     });
-    tl.to(animate.current, {
+    tl.to(animateBallHero.current, {
       xPercent: 1200,
-      yPercent: 1800,
+      yPercent: 1400,
       opacity: 0.3,
       duration: 1,
       delay: 1,
@@ -520,7 +367,7 @@ const IndexPage = () => {
             <div className={styles.appLeftContentHero}>
               <div className={styles.appLeftContentHeroRole}>
                 <h1 className={styles.role}>Desarrollador Frontend</h1>
-                <div className={styles.contentButton}>
+                <div className={styles.contentButtonContact}>
                   <form className={styles.contentButtonForm}>
                     <button className={styles.contactButton}>Contáctame</button>
                   </form>
@@ -528,10 +375,10 @@ const IndexPage = () => {
               </div>
               <div className={styles.appContentScrollArrow}>
                 <span className={styles.scrollBack}>
-                  {/* <span ref={animate} className={styles.scrollBefore}></span> */}
+                  {/* <span ref={animateBallHero} className={styles.scrollBefore}></span> */}
                   <ArrowIcon />
                 </span>
-                <span ref={animate} className={styles.scrollBefore}></span>
+                <span ref={animateBallHero} className={styles.scrollBefore}></span>
               </div>
               {/* <span className={styles.backgroundSectionLeft}></span> */}
             </div>
@@ -653,7 +500,7 @@ const IndexPage = () => {
                   <button className={styles.contactButton}>Contáctame</button>
                 </form>
               </div> */}
-              <div className={styles.contentButton}>
+              <div className={styles.contentButtonContactAbout}>
                 <form className={styles.contentButtonForm}>
                   <button className={styles.contactButton}>Contáctame</button>
                 </form>
@@ -701,7 +548,7 @@ const IndexPage = () => {
           </div>
 
           <div className={styles.wrapperContentChallenge}>
-            <div className={styles.wrapperContentChallenge}></div>
+            {/* <div className={styles.wrapperContentChallenge}></div> */}
             <div className={styles.appLeftContentChallenge}>
               <div className={styles.challengesSubTitle}>
                 <h3 id="text" className={styles.h3Challenge}>
@@ -788,7 +635,7 @@ const IndexPage = () => {
                 <span>Mensaje</span>
                 <input placeholder={"Nos gustaría..."}></input>
               </form>
-              <div className={styles.contentButton}>
+              <div className={styles.contentButtonSendMsg}>
                 <form className={styles.contentButtonForm}>
                   <button className={styles.contactButton}>Enviar</button>
                 </form>

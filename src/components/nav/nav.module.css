@@ -39,7 +39,7 @@
 }
 
 .app-content-nav-links {
-  /* display: none; */
+  display: none;
   /* border: 2px solid blueviolet; */
   position: fixed;
   right: 0;
@@ -90,7 +90,7 @@
 }
 
 .li-link {
-  margin: 6vh 0;
+  /* margin: 6vh 0; */
 }
 
 .item-link {

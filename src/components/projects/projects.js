@@ -16,7 +16,6 @@ const Project = ({ projectsArray, title, subTitle }) => {
           </div>
           <div className={styles.wrapperPersonalProjects}>
             {projectsArray.map((work) => (
-              <>
                 <div key={work.name}>
                   <div
                     
@@ -51,7 +50,6 @@ const Project = ({ projectsArray, title, subTitle }) => {
                     </div>
                   </div>
                 </div>
-              </>
             ))}
           </div>
           <div className={styles.contentMoreLink}>

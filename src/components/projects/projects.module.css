@@ -1,6 +1,6 @@
 .wrapper-padding {
   position: relative;
-  padding: 5vh 5vw;
+  padding: 0 5vw;
 }
 
 .app-content-personal-projects-header {
@@ -26,7 +26,8 @@
   /* border: 2px solid red; */
   display: flex;
   flex-direction: column;
-  margin-top: 20vh;
+  /* margin-top: 20vh; */
+  padding-top: 20vh;
 }
 
 .content-personal-project {
@@ -38,7 +39,7 @@
 .content-personal-project:first-child {
   /* border: 2px solid brown; */
   flex-direction: row-reverse;
-  margin-bottom: 10vh;
+  /* margin-bottom: 10vh; */
 }
 
 .content-personal-project-img {
@@ -84,7 +85,8 @@
   /* border: 2px solid green; */
   display: flex;
   justify-content: center;
-  margin-top: 20vh;
+  /* margin-top: 20vh; */
+  padding-top: 20vh;
   position: relative;
 }
 
@@ -134,6 +136,7 @@
 }
 
 .more-link {
+  /* border: 2px solid greenyellow; */
   color: var(--primary-text);
   font-size: calc(1vw + .5em);
   font-family: var(--title-font);
@@ -145,7 +148,8 @@
   /* border: 2px solid blue; */
   display: flex;
   justify-content: center;
-  margin-top: 5vh;
-  margin-bottom: 15vh;
+  /* margin-top: 5vh; */
+  /* margin-bottom: 15vh; */
+  padding: 10vh 0;
   position: relative;
 }
